@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "722839181366",
+    "project_id": "videojuego-univ",
+    "storage_bucket": "videojuego-univ.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722839181366:android:97c51fe14c6d11fd4ca097",
+        "android_client_info": {
+          "package_name": "com.univalle.chaken"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6yrCvHNzLE2qC8FQdIA7HTYMbmHi5sHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722839181366:android:5ff11c1be74c93134ca097",
+        "android_client_info": {
+          "package_name": "com.univalle.videojuego.chaken"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6yrCvHNzLE2qC8FQdIA7HTYMbmHi5sHI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
