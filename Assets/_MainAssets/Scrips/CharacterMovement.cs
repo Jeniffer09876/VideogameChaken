@@ -42,16 +42,26 @@ public class CharacterMovement : MonoBehaviour
     bool isHuman;
     bool isCrounch;
 
+    public Projectile projectileScript;
+    [SerializeField]
+    private float cooldown;
+    private bool magicThrowed;
+    private QuadraticCurve curve;
+    [SerializeField]
+    private Vector3 curveStartPosition;
+
     AnimationEvents animEvents;
     GoodToad goodToad;
     Pick pick;
     Timer canvas;
+
+
     // Start is called before the first frame update
 
     // Update is called once per frame
 
     private void Awake()
-    {
+    {   
         //animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         healthBar.SetMaxHelth(maxHealth);
@@ -63,6 +73,9 @@ public class CharacterMovement : MonoBehaviour
         hashVelocity = Animator.StringToHash("RunVelocity");
         playerVelicity = 0.0f;
         currentHeatlh = maxHealth;
+        cooldown = 0f;
+        curve = projectileScript.curve;
+        curveStartPosition = curve.transform.position;
     }
 
     void Update()
@@ -71,17 +84,30 @@ public class CharacterMovement : MonoBehaviour
         vertical = Input.GetAxisRaw("Vertical");
 
         //Inputs aim
-
-        if (Input.GetKey("space"))
+        if (cooldown <=0)
         {
-            animator.SetBool("Aiming", true);
-            AimingMove();
+            if (Input.GetKeyDown("space"))
+            {
+                animator.SetBool("Aiming", true);
+            }
+
+            if (Input.GetKeyUp("space"))
+            {
+            
+                animator.SetBool("Aiming", false);
+                StartCoroutine(WaitForAimAnimation());
+            }
+
+            if (Input.GetKey("space"))
+            {
+                AimingMove();
+            }
         }
-        else
+
+
+        if (!Input.GetKey("space"))
         {
             Move();
-
-            animator.SetBool("Aiming", false);
         }
 
         //zombie input
@@ -145,10 +171,32 @@ public class CharacterMovement : MonoBehaviour
         if (Input.GetKeyDown("p")) animator.SetTrigger("PositiveInteraction");
         if (Input.GetKeyDown("n")) animator.SetTrigger("NegativeInteraction");
 
-  
-        
+
+        if (cooldown > 0 && magicThrowed)
+        {
+            cooldown -= Time.deltaTime;
+            if (cooldown <= 0)
+            {
+                magicThrowed = false;
+                curve.transform.SetParent(transform);
+                curve.transform.localPosition = new Vector3(-0.27f, 0.9934968f,2.21f);
+                curve.transform.rotation = transform.rotation;
+            }
+
+        }
 
     }
+
+    IEnumerator WaitForAimAnimation() 
+    {
+        yield return new WaitForSeconds(0.8f); 
+        projectileScript.gameObject.SetActive(true);
+        projectileScript.magic = true;
+        cooldown = 2;
+        magicThrowed = true;
+        curve.transform.SetParent(transform.parent);
+    }
+
 
     private void Move()
     {
@@ -160,7 +208,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _velocity = -gravity * Time.deltaTime;
             characterController.Move(new Vector3(0, _velocity, 0));
-            print("gravity");
+            //print("gravity");
         }
 
 
@@ -224,7 +272,7 @@ public class CharacterMovement : MonoBehaviour
         {
             _velocity = -gravity * Time.deltaTime;
             characterController.Move(new Vector3(0, _velocity, 0));
-            print("gravity");
+            //print("gravity");
         }
 
         if (xInput < 1.5f)
