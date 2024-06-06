@@ -10,6 +10,7 @@ public class AnimationEvents : MonoBehaviour
     public Text counter;
     public ParticleSystem playerHappyParticles;
     public ParticleSystem playerSickParticles;
+    public ParticleSystem playerChargeParticles;
     public bool destroyGoodToad;
 
     public int count;
@@ -24,7 +25,8 @@ public class AnimationEvents : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
+    {
+        /*
         if (pick.badToadArea)
         {
             playerSickParticles.Play(true);
@@ -50,6 +52,16 @@ public class AnimationEvents : MonoBehaviour
     public void PlaySick()
     {
         playerSickParticles.Play(true);
+    }
+
+    public void PlayChargeStick()
+    {
+        playerChargeParticles.Play(true);
+    }
+
+    public void StopChargeStick()
+    {
+        playerChargeParticles.Stop(true);
     }
 
     public void ResetGame()

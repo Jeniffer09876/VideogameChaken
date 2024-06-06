@@ -15,8 +15,8 @@ public class CharacterMovement : MonoBehaviour
 
     public float runSpeed = 5f;
     public float AimRunSpeed = 2f;
-    public float zombieSpeed = 1.5f;
-    public float crounchSpeed = 2f;
+    private float zombieSpeed = 1.5f;
+    private float crounchSpeed = 2f;
     public float turnSmoothTime = 0.1f;
     public int maxHealth = 100;
     public int currentHeatlh;
@@ -93,14 +93,16 @@ public class CharacterMovement : MonoBehaviour
 
             if (Input.GetKeyUp("space"))
             {
-            
+                
                 animator.SetBool("Aiming", false);
                 StartCoroutine(WaitForAimAnimation());
+                animEvents.StopChargeStick();
             }
 
             if (Input.GetKey("space"))
             {
                 AimingMove();
+                animEvents.PlayChargeStick();
             }
         }
 
@@ -111,7 +113,7 @@ public class CharacterMovement : MonoBehaviour
         }
 
         //zombie input
-        if (Input.GetKeyDown("z"))
+        if (false)
         {
             isHuman = false;
             animator.SetTrigger("Zombie");
@@ -119,29 +121,29 @@ public class CharacterMovement : MonoBehaviour
 
         //make human
 
-        if (Input.GetKeyDown("h"))
+        if (Input.GetKeyDown("f"))
         {
             isHuman = true;
             animator.SetTrigger("Human");
         }
 
         // crounch input
-        if (Input.GetKeyDown("v"))
+        if (false)
         {
             isCrounch = true;
             animator.SetTrigger("Crounch");
         }
 
         //up input
-        if (Input.GetKeyDown("b"))
+        if (false)
         {
             isCrounch = false;
             animator.SetTrigger("Up");
         }
         // pickup item input
-        if (Input.GetKeyDown("c")) animator.SetTrigger("PickUp");
+        if (Input.GetKeyDown("e")) animator.SetTrigger("PickUp");
 
-        if (Input.GetKeyDown("1")) animator.SetTrigger("TakeHealth");
+        if (Input.GetKeyDown("q")) animator.SetTrigger("TakeHealth");
 
         if (pick.badToadArea)
         {
@@ -189,7 +191,7 @@ public class CharacterMovement : MonoBehaviour
 
     IEnumerator WaitForAimAnimation() 
     {
-        yield return new WaitForSeconds(0.8f); 
+        yield return new WaitForSeconds(0.6f); 
         projectileScript.gameObject.SetActive(true);
         projectileScript.magic = true;
         cooldown = 2;

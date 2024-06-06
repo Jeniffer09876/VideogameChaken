@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 682428957002912062}
   - component: {fileID: 4623455991232192749}
   m_Layer: 0
-  m_Name: Bad_toad_1
+  m_Name: Bad_Crystal_1
   m_TagString: badToad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,8 +213,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6221043, y: 1.2188947, z: 1.4648621}
-  m_Center: {x: 0.20322156, y: 0.5580527, z: 0.40662}
+  m_Size: {x: 1.1799077, y: 1.2188947, z: 1.1553246}
+  m_Center: {x: -0.017876664, y: 0.5580527, z: 0.2518513}
 --- !u!114 &4623455991232192749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,6 +559,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480158, guid: d788483dee89ba84494ca6b444059981, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19810200, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19814762, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19862388, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19866866, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19893030, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19937128, guid: d788483dee89ba84494ca6b444059981, type: 3}

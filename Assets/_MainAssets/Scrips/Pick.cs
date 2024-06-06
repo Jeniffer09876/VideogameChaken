@@ -6,6 +6,7 @@ public class Pick : MonoBehaviour
 {
     public bool goodToadArea;
     public bool badToadArea;
+    public bool portalArea;
     private AnimationEvents AnimEvents;
     // Start is called before the first frame update
     private void Start()
@@ -13,7 +14,7 @@ public class Pick : MonoBehaviour
         AnimEvents = FindObjectOfType<AnimationEvents>();
     }
     private void OnTriggerStay(Collider other)
-    {
+    {       
 
         if (other.gameObject.tag == "badToad")
         {
@@ -27,6 +28,7 @@ public class Pick : MonoBehaviour
         {
             goodToadArea = true;
         }
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -34,6 +36,7 @@ public class Pick : MonoBehaviour
         {
             goodToadArea = false;
         }
+
     }
 
     private void Update()
