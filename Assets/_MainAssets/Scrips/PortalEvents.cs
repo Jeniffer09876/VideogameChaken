@@ -8,11 +8,12 @@ public class PortalEvents : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem portal;
-
     [SerializeField]
     private int numberOfCrystals;
     [SerializeField]
     private AnimationEvents animEvents;
+
+
     // Start is called before the first frame update
     void Start()
     {
