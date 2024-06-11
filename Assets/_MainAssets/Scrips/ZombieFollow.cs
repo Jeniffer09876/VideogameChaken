@@ -2,37 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAttack : MonoBehaviour
+public class ZombieFollow : MonoBehaviour
 {
-    public bool isAttacking;
     public Animator animator;
-    public float cooldownAttack;
-    public bool cooldownBool;
+    public bool idle;
 
     // Start is called before the first frame update
     void Start()
     {
-        isAttacking = false;
+        idle = true;    
     }
-
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            isAttacking = true;
-            animator.SetTrigger("Attack");
+            idle = false;
+            //animator.SetBool("isWalk",true);
         }
     }
-
-
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            isAttacking = false;
+            idle = true;
+            //animator.SetBool("isWalk", false);
         }
     }
-
-
 }

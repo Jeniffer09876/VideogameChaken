@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -21,6 +23,7 @@ public class CharacterMovement : MonoBehaviour
     public int maxHealth = 100;
     public int currentHeatlh;
     public int damage = 1;
+    public int zombieDamage = 10;
     public float gravityMultiplayer;
 
     private float gravity = 9.81f;
@@ -54,6 +57,8 @@ public class CharacterMovement : MonoBehaviour
     GoodToad goodToad;
     Pick pick;
     Timer canvas;
+    ZombieAttack ZombieAttack;
+    ZombieWalk ZombieWalk;
 
 
     // Start is called before the first frame update
@@ -69,6 +74,8 @@ public class CharacterMovement : MonoBehaviour
         canvas = FindObjectOfType<Timer>();
         goodToad = FindObjectOfType<GoodToad>();
         animEvents = FindObjectOfType<AnimationEvents>();
+        ZombieAttack = FindObjectOfType<ZombieAttack>();
+        ZombieWalk = FindObjectOfType<ZombieWalk>();
         isHuman = true;
         hashVelocity = Animator.StringToHash("RunVelocity");
         playerVelicity = 0.0f;
@@ -145,6 +152,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown("q")) animator.SetTrigger("TakeHealth");
 
+         
         if (pick.badToadArea)
         {
             animator.SetTrigger("TakeDamage");
@@ -160,7 +168,6 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetKeyDown("r"))
             {
                 ResetGame();
-
             }
         }
 
@@ -187,6 +194,25 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Zombie")
+        {   
+            StartCoroutine(WaitForAttack());
+        }
+    }
+
+    IEnumerator WaitForAttack()
+    {
+        yield return new WaitForSeconds(0.3f);
+        animator.SetTrigger("TakeDamage");
+        healthBar.SetHelth(currentHeatlh);
+        currentHeatlh -= zombieDamage;
+        Vector3 PushVector = transform.forward * 2f;
+        transform.DOMove(transform.position - PushVector, 0.5f).SetEase(Ease.Linear);
     }
 
     IEnumerator WaitForAimAnimation() 
