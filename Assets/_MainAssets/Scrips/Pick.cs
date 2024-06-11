@@ -13,20 +13,17 @@ public class Pick : MonoBehaviour
     {
         AnimEvents = FindObjectOfType<AnimationEvents>();
     }
-    private void OnTriggerStay(Collider other)
-    {       
-
-        if (other.gameObject.tag == "badToad")
-        {
-            badToadArea = true;
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "goodToad")
         {
             goodToadArea = true;
+        }
+
+        if (other.gameObject.tag == "badToad")
+        {
+            badToadArea = true;
         }
 
     }

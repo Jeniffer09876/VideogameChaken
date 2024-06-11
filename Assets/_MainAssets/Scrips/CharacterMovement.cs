@@ -158,6 +158,8 @@ public class CharacterMovement : MonoBehaviour
             animator.SetTrigger("TakeDamage");
             healthBar.SetHelth(currentHeatlh);
             currentHeatlh -= damage;
+            Vector3 PushVector = transform.forward * 2f;
+            transform.DOMove(transform.position - PushVector, 0.5f).SetEase(Ease.Linear);
             pick.badToadArea = false;
         }
 
