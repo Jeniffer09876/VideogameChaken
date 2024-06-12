@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
     public float speed;
     private float sampleTime;
     public bool magic;
+    public ParticleSystem boomParticles;
+    public ParticleSystem magicParticles;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +40,22 @@ private void OnEnable()
 
         if (sampleTime > 1f)
         {
-            Debug.Log("boom");
-            gameObject.SetActive(false);
+           // Debug.Log("boom");
+            //boomParticles.Play(true);
+            magicParticles.Stop(true);
             magic = false;
             sampleTime = 0f;
           
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("boom");
+        boomParticles.Play(true);
+        magicParticles.Stop(true);
+//gameObject.SetActive(false);
+    }
+
+  
 }
