@@ -11,10 +11,12 @@ public class Projectile : MonoBehaviour
     public bool magic;
     public ParticleSystem boomParticles;
     public ParticleSystem magicParticles;
+    ZombieWalk ZombieWalk;
 
     // Start is called before the first frame update
     void Start()
     {
+        ZombieWalk = FindObjectOfType<ZombieWalk>();
         sampleTime = 0f;
     }
 
@@ -49,6 +51,10 @@ private void OnEnable()
 
   private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "zombieDamage")
+        {
+            ZombieWalk.ZombieTakeDamage();
+        }
         Debug.Log("boom");
         boomParticles.Play(true);
         magicParticles.Stop(true);
