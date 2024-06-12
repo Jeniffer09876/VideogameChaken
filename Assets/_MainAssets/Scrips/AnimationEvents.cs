@@ -14,6 +14,8 @@ public class AnimationEvents : MonoBehaviour
     public bool destroyGoodToad;
     public AudioSource magicSfx;
     public AudioSource chargeMagicSfx;
+    public AudioSource goodCrystalSfx;
+    public AudioSource damageSfx;
 
 
     public int count;
@@ -46,6 +48,7 @@ public class AnimationEvents : MonoBehaviour
         {
             destroyGoodToad = true;
             playerHappyParticles.Play(true);
+            goodCrystalSfx.Play();
             count++;
             counter.text = count.ToString();
             pick.goodToadArea = false;
@@ -75,5 +78,10 @@ public class AnimationEvents : MonoBehaviour
     {
         count = 0;
         counter.text = count.ToString();
+    }
+
+    public void TakeDamage()
+    {
+        damageSfx.Play();
     }
 }

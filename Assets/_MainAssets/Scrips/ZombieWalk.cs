@@ -16,7 +16,7 @@ public class ZombieWalk : MonoBehaviour
     public Vector3 damageVector;
     public bool isDead;
     public int hitDamaged;
-    private ParticleSystem dieParticles;
+    public ParticleSystem dieParticles;
     
     
     

@@ -6,12 +6,10 @@ public class GoodToad : MonoBehaviour
 {
     private AnimationEvents animEvents;
     private Pick pick;
-    private AudioSource sfxGoodCrystal;
     private void Start()
     {
         animEvents = FindObjectOfType<AnimationEvents>();
         pick = FindObjectOfType<Pick>();
-        sfxGoodCrystal = GetComponent<AudioSource>();
     }
 
     public void ResetGame()
@@ -25,7 +23,6 @@ public class GoodToad : MonoBehaviour
         {
             if (animEvents.destroyGoodToad)
             {
-                sfxGoodCrystal.Play();
                 pick.goodToadArea = false;
                 //Destroy(this.gameObject);
                 this.gameObject.SetActive(false);

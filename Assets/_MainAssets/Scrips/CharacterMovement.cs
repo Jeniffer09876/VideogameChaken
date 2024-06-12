@@ -122,52 +122,28 @@ public class CharacterMovement : MonoBehaviour
             Move();
         }
 
-        //zombie input
-        if (false)
-        {
-            //isHuman = false;
-            //animator.SetTrigger("Zombie");
-        }
 
-        //make human
 
-        if (Input.GetKeyDown("f"))
-        {
-            isHuman = true;
-            animator.SetTrigger("Human");
-        }
-
-        // crounch input
-        if (false)
-        {
-            //isCrounch = true;
-            //animator.SetTrigger("Crounch");
-        }
-
-        //up input
-        if (false)
-        {
-            //isCrounch = false;
-            //animator.SetTrigger("Up");
-        }
         // pickup item input
         if (Input.GetKeyDown("e")) animator.SetTrigger("PickUp");
 
-        if (Input.GetKeyDown("q")) animator.SetTrigger("TakeHealth");
+        //if (Input.GetKeyDown("q")) animator.SetTrigger("TakeHealth");
 
          
         if (pick.badToadArea)
         {
             animator.SetTrigger("TakeDamage");
-            healthBar.SetHelth(currentHeatlh);
             currentHeatlh -= damage;
+            healthBar.SetHelth(currentHeatlh);
             Vector3 PushVector = transform.forward * 2f;
             transform.DOMove(transform.position - PushVector, 0.5f).SetEase(Ease.Linear);
             pick.badToadArea = false;
         }
 
+        //dead condition
         if (currentHeatlh <= 0)
         {
+
             canvas.loseGame();
 
             if (Input.GetKeyDown("r"))
@@ -176,16 +152,7 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown("3")) animator.SetTrigger("TakeDamageZombie");
-
-        if (Input.GetKeyDown("4")) animator.SetTrigger("DieZombie");
-
-
-        if (Input.GetKeyDown("x")) animator.SetTrigger("StarsInteraction");
-        if (Input.GetKeyDown("p")) animator.SetTrigger("PositiveInteraction");
-        if (Input.GetKeyDown("n")) animator.SetTrigger("NegativeInteraction");
-
-
+        //cooldown condition
         if (cooldown > 0 && magicThrowed)
         {
             cooldown -= Time.deltaTime;
@@ -213,9 +180,10 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator WaitForAttack()
     {
         yield return new WaitForSeconds(0.3f);
+        animEvents.TakeDamage();
         animator.SetTrigger("TakeDamage");
-        healthBar.SetHelth(currentHeatlh);
         currentHeatlh -= zombieDamage;
+        healthBar.SetHelth(currentHeatlh);
         Vector3 PushVector = transform.forward * 2f;
         transform.DOMove(transform.position - PushVector, 0.5f).SetEase(Ease.Linear);
     }
@@ -359,11 +327,11 @@ public class CharacterMovement : MonoBehaviour
     {
         dad.transform.position = resetTrasform.position;
         dad.transform.rotation = resetTrasform.rotation;
+        currentHeatlh = maxHealth;
         healthBar.SetHelth(currentHeatlh);
         canvas.ResetTime();
         goodToad.ResetGame();
         animEvents.ResetGame();
-        currentHeatlh = maxHealth;
     }
 
     void ZombieMove()
