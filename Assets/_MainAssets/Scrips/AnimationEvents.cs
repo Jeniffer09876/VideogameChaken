@@ -12,6 +12,9 @@ public class AnimationEvents : MonoBehaviour
     public ParticleSystem playerSickParticles;
     public ParticleSystem playerChargeParticles;
     public bool destroyGoodToad;
+    public AudioSource magicSfx;
+    public AudioSource chargeMagicSfx;
+
 
     public int count;
     // Start is called before the first frame update
@@ -57,11 +60,15 @@ public class AnimationEvents : MonoBehaviour
     public void PlayChargeStick()
     {
         playerChargeParticles.Play(true);
+        chargeMagicSfx.Play();
+
     }
 
     public void StopChargeStick()
     {
         playerChargeParticles.Stop(true);
+        chargeMagicSfx.Stop();
+        magicSfx.Play();
     }
 
     public void ResetGame()

@@ -60,8 +60,6 @@ public class CharacterMovement : MonoBehaviour
     ZombieAttack ZombieAttack;
     ZombieWalk ZombieWalk;
 
-    private AudioSource magicSfx;
-
 
     // Start is called before the first frame update
 
@@ -85,7 +83,6 @@ public class CharacterMovement : MonoBehaviour
         cooldown = 0f;
         curve = projectileScript.curve;
         curveStartPosition = curve.transform.position;
-        magicSfx = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -99,14 +96,18 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 animator.SetBool("Aiming", true);
-                animEvents.playerChargeParticles.Play(true);
+                //animEvents.playerChargeParticles.Play(true);
+                animEvents.PlayChargeStick();
+
             }
 
             if (Input.GetKeyUp("space"))
             {
                 animator.SetBool("Aiming", false);
+                //animEvents.playerChargeParticles.Stop(true);
+                animEvents.StopChargeStick();
+                
                 StartCoroutine(WaitForAimAnimation());
-                animEvents.playerChargeParticles.Stop(true);
             }
 
             if (Input.GetKey("space"))
@@ -124,8 +125,8 @@ public class CharacterMovement : MonoBehaviour
         //zombie input
         if (false)
         {
-            isHuman = false;
-            animator.SetTrigger("Zombie");
+            //isHuman = false;
+            //animator.SetTrigger("Zombie");
         }
 
         //make human
@@ -139,15 +140,15 @@ public class CharacterMovement : MonoBehaviour
         // crounch input
         if (false)
         {
-            isCrounch = true;
-            animator.SetTrigger("Crounch");
+            //isCrounch = true;
+            //animator.SetTrigger("Crounch");
         }
 
         //up input
         if (false)
         {
-            isCrounch = false;
-            animator.SetTrigger("Up");
+            //isCrounch = false;
+            //animator.SetTrigger("Up");
         }
         // pickup item input
         if (Input.GetKeyDown("e")) animator.SetTrigger("PickUp");
@@ -223,7 +224,6 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         //projectileScript.gameObject.SetActive(true);
-        magicSfx.Play();
         projectileScript.magicParticles.Play(true);
         projectileScript.magic = true;
         cooldown = 2;

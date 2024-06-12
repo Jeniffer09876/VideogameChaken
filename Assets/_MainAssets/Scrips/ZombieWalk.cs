@@ -16,7 +16,9 @@ public class ZombieWalk : MonoBehaviour
     public Vector3 damageVector;
     public bool isDead;
     public int hitDamaged;
-    public ParticleSystem dieParticles;
+    private ParticleSystem dieParticles;
+    
+    
     
     void Start()
     {
@@ -25,6 +27,7 @@ public class ZombieWalk : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
         isDead = false;
         hitDamaged = 0;
+
     }
 
     // Update is called once per frame

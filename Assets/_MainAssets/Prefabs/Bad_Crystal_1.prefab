@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &514598271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412378796710391098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.009730027, y: 0.009416798, z: 0.0886659}
+  m_Center: {x: -0.004800941, y: -0.0074246726, z: 0.008127878}
 --- !u!1 &682428957002912059
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,7 +29,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &682428957003271451
 Transform:
@@ -98,7 +111,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 0
 --- !u!4 &682428957003271453
 Transform:
@@ -175,12 +188,13 @@ GameObject:
   - component: {fileID: 682428957003271455}
   - component: {fileID: 682428957002912062}
   - component: {fileID: 4623455991232192749}
+  - component: {fileID: 404977693}
   m_Layer: 0
   m_Name: Bad_Crystal_1
   m_TagString: badToad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &682428957003271455
 Transform:
@@ -213,8 +227,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1799077, y: 1.2188947, z: 1.1553246}
-  m_Center: {x: -0.017876664, y: 0.5580527, z: 0.2518513}
+  m_Size: {x: 0.65911454, y: 1.2188947, z: 0.66341734}
+  m_Center: {x: -0.027033122, y: 0.5580527, z: 0.24172695}
 --- !u!114 &4623455991232192749
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +242,102 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoke: {fileID: 858920236281928308}
+--- !u!82 &404977693
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 682428957002912063}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 73f34590ca4a9b6409f7d3d29781d2ad, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &682428956352887388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,9 +345,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682428957003271455}
     m_Modifications:
+    - target: {fileID: 112662, guid: 5201335ef7c4efb4b8ee21ccc008d90b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 186306, guid: 5201335ef7c4efb4b8ee21ccc008d90b, type: 3}
       propertyPath: m_Name
       value: ChestAppearPurple
+      objectReference: {fileID: 0}
+    - target: {fileID: 186306, guid: 5201335ef7c4efb4b8ee21ccc008d90b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 460960, guid: 5201335ef7c4efb4b8ee21ccc008d90b, type: 3}
       propertyPath: m_RootOrder
@@ -405,8 +523,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crystal_LP
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 86d86353bec1fa94ba27c360cf5b114c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86d86353bec1fa94ba27c360cf5b114c, type: 3}
+--- !u!1 &412378796710391098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 86d86353bec1fa94ba27c360cf5b114c, type: 3}
+  m_PrefabInstance: {fileID: 682428957007433835}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1077135433091200896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86d86353bec1fa94ba27c360cf5b114c, type: 3}
@@ -422,6 +549,14 @@ PrefabInstance:
     - target: {fileID: 144796, guid: 0e5ef80beee6f234b9b27568218dbaf1, type: 3}
       propertyPath: m_Name
       value: SparkleGreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 144796, guid: 0e5ef80beee6f234b9b27568218dbaf1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 189616, guid: 0e5ef80beee6f234b9b27568218dbaf1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 458516, guid: 0e5ef80beee6f234b9b27568218dbaf1, type: 3}
       propertyPath: m_RootOrder
@@ -501,9 +636,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 682428957003271455}
     m_Modifications:
+    - target: {fileID: 114214, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 166006, guid: d788483dee89ba84494ca6b444059981, type: 3}
       propertyPath: m_Name
       value: LightningStrikeSharpPink
+      objectReference: {fileID: 0}
+    - target: {fileID: 166006, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 172224, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 175334, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 199988, guid: d788483dee89ba84494ca6b444059981, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 480158, guid: d788483dee89ba84494ca6b444059981, type: 3}
       propertyPath: m_RootOrder
