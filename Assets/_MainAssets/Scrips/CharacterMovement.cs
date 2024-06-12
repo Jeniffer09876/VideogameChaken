@@ -85,7 +85,7 @@ public class CharacterMovement : MonoBehaviour
         curveStartPosition = curve.transform.position;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -220,7 +220,7 @@ public class CharacterMovement : MonoBehaviour
     IEnumerator WaitForAimAnimation() 
     {
         yield return new WaitForSeconds(0.6f); 
-        projectileScript.magicParticles.Play();
+        projectileScript.gameObject.SetActive(true);
         projectileScript.magic = true;
         cooldown = 2;
         magicThrowed = true;
