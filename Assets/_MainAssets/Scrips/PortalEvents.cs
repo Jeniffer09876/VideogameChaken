@@ -12,12 +12,15 @@ public class PortalEvents : MonoBehaviour
     private int numberOfCrystals;
     [SerializeField]
     private AnimationEvents animEvents;
+    [SerializeField]
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         animEvents = FindObjectOfType<AnimationEvents>();
+        portal.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,6 +46,8 @@ public class PortalEvents : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             portal.Stop(true);
+            portal.gameObject.SetActive(false);
+
         }
     }
 

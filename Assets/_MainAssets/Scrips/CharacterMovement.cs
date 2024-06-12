@@ -60,6 +60,8 @@ public class CharacterMovement : MonoBehaviour
     ZombieAttack ZombieAttack;
     ZombieWalk ZombieWalk;
 
+    private AudioSource magicSfx;
+
 
     // Start is called before the first frame update
 
@@ -83,6 +85,7 @@ public class CharacterMovement : MonoBehaviour
         cooldown = 0f;
         curve = projectileScript.curve;
         curveStartPosition = curve.transform.position;
+        magicSfx = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -101,7 +104,6 @@ public class CharacterMovement : MonoBehaviour
 
             if (Input.GetKeyUp("space"))
             {
-                
                 animator.SetBool("Aiming", false);
                 StartCoroutine(WaitForAimAnimation());
                 animEvents.playerChargeParticles.Stop(true);
@@ -221,6 +223,7 @@ public class CharacterMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(0.6f);
         //projectileScript.gameObject.SetActive(true);
+        magicSfx.Play();
         projectileScript.magicParticles.Play(true);
         projectileScript.magic = true;
         cooldown = 2;

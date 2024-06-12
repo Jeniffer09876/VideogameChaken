@@ -12,12 +12,14 @@ public class Projectile : MonoBehaviour
     public ParticleSystem boomParticles;
     public ParticleSystem magicParticles;
     ZombieWalk ZombieWalk;
+    private AudioSource explotionSfx;
 
     // Start is called before the first frame update
     void Start()
     {
         ZombieWalk = FindObjectOfType<ZombieWalk>();
         sampleTime = 0f;
+        explotionSfx = GetComponent<AudioSource>();
     }
 
 private void OnEnable()
@@ -55,6 +57,7 @@ private void OnEnable()
         {
             ZombieWalk.ZombieTakeDamage();
         }
+        explotionSfx.Play();
         Debug.Log("boom");
         boomParticles.Play(true);
         magicParticles.Stop(true);

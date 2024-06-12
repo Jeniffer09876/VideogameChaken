@@ -1473,6 +1473,10 @@ PrefabInstance:
       value: 2.197
       objectReference: {fileID: 0}
     - target: {fileID: 986243136124549803, guid: a5c77950b0320e8498fcbaf6c83dddc3, type: 3}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 986243136124549803, guid: a5c77950b0320e8498fcbaf6c83dddc3, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1872663168}
