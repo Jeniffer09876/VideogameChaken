@@ -9,6 +9,8 @@ TagManager:
   - goodToad
   - portal
   - Zombie
+  - Magic
+  - zombieDamage
   layers:
   - Default
   - TransparentFX
