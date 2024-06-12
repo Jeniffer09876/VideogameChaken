@@ -96,6 +96,7 @@ public class CharacterMovement : MonoBehaviour
             if (Input.GetKeyDown("space"))
             {
                 animator.SetBool("Aiming", true);
+                animEvents.playerChargeParticles.Play(true);
             }
 
             if (Input.GetKeyUp("space"))
@@ -103,13 +104,12 @@ public class CharacterMovement : MonoBehaviour
                 
                 animator.SetBool("Aiming", false);
                 StartCoroutine(WaitForAimAnimation());
-                animEvents.StopChargeStick();
+                animEvents.playerChargeParticles.Stop(true);
             }
 
             if (Input.GetKey("space"))
             {
                 AimingMove();
-                animEvents.PlayChargeStick();
             }
         }
 
@@ -219,8 +219,9 @@ public class CharacterMovement : MonoBehaviour
 
     IEnumerator WaitForAimAnimation() 
     {
-        yield return new WaitForSeconds(0.6f); 
-        projectileScript.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.6f);
+        //projectileScript.gameObject.SetActive(true);
+        projectileScript.magicParticles.Play(true);
         projectileScript.magic = true;
         cooldown = 2;
         magicThrowed = true;
