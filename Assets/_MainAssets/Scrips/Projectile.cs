@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     public ParticleSystem magicParticles;
     ZombieWalk ZombieWalk;
     private AudioSource explotionSfx;
+    private Collider colliderProjectile;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Projectile : MonoBehaviour
         ZombieWalk = FindObjectOfType<ZombieWalk>();
         sampleTime = 0f;
         explotionSfx = GetComponent<AudioSource>();
+        colliderProjectile = GetComponent<Collider>();
     }
 
 private void OnEnable()
@@ -32,6 +34,7 @@ private void OnEnable()
     {
         if (magic)
         {
+            colliderProjectile.isTrigger = false;
             shootMagic();
         }
     }
@@ -47,12 +50,13 @@ private void OnEnable()
             magicParticles.Stop(true);
             magic = false;
             sampleTime = 0f;
-          
+            //StartCoroutine(DestroyParticle());
         }
     }
 
   private void OnCollisionEnter(Collision collision)
     {
+        colliderProjectile.isTrigger = true;
         if (collision.gameObject.tag == "zombieDamage")
         {
             ZombieWalk.ZombieTakeDamage();
@@ -61,6 +65,12 @@ private void OnEnable()
         Debug.Log("boom");
         boomParticles.Play(true);
         magicParticles.Stop(true);
-        //gameObject.SetActive(false);
+        //StartCoroutine(DestroyParticle());
     }
+    IEnumerator DestroyParticle()
+    {
+        yield return new WaitForSeconds(1);
+        gameObject.SetActive(false);
+    }
+
 }

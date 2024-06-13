@@ -29,10 +29,7 @@ public class Timer : MonoBehaviour
         if (currentTime <= 0)
         {
             loseGame();
-            if (Input.GetKeyDown("r"))
-            {
-                cm.ResetGame();
-            }
+            StartCoroutine(cm.ResetGame()) ;
         }
 
     }

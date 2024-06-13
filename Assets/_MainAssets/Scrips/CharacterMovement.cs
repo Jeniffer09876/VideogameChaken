@@ -5,6 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -44,6 +46,7 @@ public class CharacterMovement : MonoBehaviour
 
     bool isHuman;
     bool isCrounch;
+    bool isDead;
 
     public Projectile projectileScript;
     [SerializeField]
@@ -59,6 +62,7 @@ public class CharacterMovement : MonoBehaviour
     Timer canvas;
     ZombieAttack ZombieAttack;
     ZombieWalk ZombieWalk;
+
 
 
     // Start is called before the first frame update
@@ -83,22 +87,25 @@ public class CharacterMovement : MonoBehaviour
         cooldown = 0f;
         curve = projectileScript.curve;
         curveStartPosition = curve.transform.position;
+        isDead = false;
+        Time.timeScale = 1f;
     }
 
     void Update()
     {
+        
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
-
-        //Inputs aim
-        if (cooldown <=0)
+        
+            //Inputs aim
+            if (cooldown <=0)
         {
             if (Input.GetKeyDown("space"))
             {
                 animator.SetBool("Aiming", true);
                 //animEvents.playerChargeParticles.Play(true);
                 animEvents.PlayChargeStick();
-
             }
 
             if (Input.GetKeyUp("space"))
@@ -106,7 +113,6 @@ public class CharacterMovement : MonoBehaviour
                 animator.SetBool("Aiming", false);
                 //animEvents.playerChargeParticles.Stop(true);
                 animEvents.StopChargeStick();
-                
                 StartCoroutine(WaitForAimAnimation());
             }
 
@@ -143,12 +149,15 @@ public class CharacterMovement : MonoBehaviour
         //dead condition
         if (currentHeatlh <= 0)
         {
-
             canvas.loseGame();
+            //Time.timeScale = 0f;
+            //isDead=true;
 
+            StartCoroutine(ResetGame());
+                
             if (Input.GetKeyDown("r"))
             {
-                ResetGame();
+                //ResetGame();
             }
         }
 
@@ -166,7 +175,7 @@ public class CharacterMovement : MonoBehaviour
 
         }
 
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -323,8 +332,12 @@ public class CharacterMovement : MonoBehaviour
         animator.SetFloat("yInput", yInput);
     }
 
-    public void ResetGame()
+    public IEnumerator ResetGame()
     {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("animationTest");
+
+        /*
         dad.transform.position = resetTrasform.position;
         dad.transform.rotation = resetTrasform.rotation;
         currentHeatlh = maxHealth;
@@ -332,6 +345,7 @@ public class CharacterMovement : MonoBehaviour
         canvas.ResetTime();
         goodToad.ResetGame();
         animEvents.ResetGame();
+        */
     }
 
     void ZombieMove()
