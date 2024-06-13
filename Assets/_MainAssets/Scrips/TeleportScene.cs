@@ -28,7 +28,7 @@ public class TeleportScene : MonoBehaviour
     IEnumerator WaitForTeleport()
     {
         yield return new WaitForSeconds(3.8f);
-        SceneManager.LoadScene("login");
+        SceneManager.LoadScene("02");
     }
         // Update is called once per frame
         void Update()

@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
         sampleTime = 0f;
         explotionSfx = GetComponent<AudioSource>();
         colliderProjectile = GetComponent<Collider>();
+  
     }
 
 private void OnEnable()
@@ -56,6 +57,8 @@ private void OnEnable()
 
   private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag != "Player")
+        { 
         colliderProjectile.isTrigger = true;
         if (collision.gameObject.tag == "zombieDamage")
         {
@@ -65,7 +68,8 @@ private void OnEnable()
         Debug.Log("boom");
         boomParticles.Play(true);
         magicParticles.Stop(true);
-        //StartCoroutine(DestroyParticle());
+            //StartCoroutine(DestroyParticle());
+        }
     }
     IEnumerator DestroyParticle()
     {

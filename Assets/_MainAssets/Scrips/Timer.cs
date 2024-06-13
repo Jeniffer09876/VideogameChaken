@@ -11,7 +11,9 @@ public class Timer : MonoBehaviour
     public Image lose;
     public Text text;
     public float currentTime;
-    public float starTime = 90;
+    public float starTime = 300;
+    public Text instruccionText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +38,7 @@ public class Timer : MonoBehaviour
 
     public void winGame()
     {
-        win.enabled = true;
+        //win.enabled = true;
     }
 
     public void loseGame()
@@ -50,5 +52,10 @@ public class Timer : MonoBehaviour
         text.text = currentTime.ToString();
         win.enabled = false;
         lose.enabled = false;
+    }
+
+    public void GoPortal()
+    {
+        instruccionText.text = "Ve la Piedra sagrada Cerca a la Maloka";
     }
 }

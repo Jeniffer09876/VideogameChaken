@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 
 public class CharacterMovement : MonoBehaviour
 {
+    public string currentScene;
     public GameObject dad;
     public Transform resetTrasform;
     public Animator animator;
@@ -335,7 +336,7 @@ public class CharacterMovement : MonoBehaviour
     public IEnumerator ResetGame()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("animationTest");
+        SceneManager.LoadScene(currentScene);
 
         /*
         dad.transform.position = resetTrasform.position;

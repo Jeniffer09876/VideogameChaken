@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PortalEvents : MonoBehaviour
 {
-
+    private Timer canvas;
     [SerializeField]
     private ParticleSystem portal;
     [SerializeField]
@@ -20,6 +20,7 @@ public class PortalEvents : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canvas = FindObjectOfType<Timer>();
         animEvents = FindObjectOfType<AnimationEvents>();
         portal.gameObject.SetActive(false);
         portalSfx = GetComponent<AudioSource>();
@@ -40,6 +41,7 @@ public class PortalEvents : MonoBehaviour
                 portal.gameObject.SetActive(true);
                 portal.Play(true);
                 portalSfx.Play();
+                canvas.GoPortal();
             }
         }
     }
