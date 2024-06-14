@@ -57,17 +57,15 @@ private void OnEnable()
 
   private void OnCollisionEnter(Collision collision)
     {
+       
         if (collision.gameObject.tag != "Player")
-        { 
-        colliderProjectile.isTrigger = true;
-        if (collision.gameObject.tag == "zombieDamage")
         {
-            ZombieWalk.ZombieTakeDamage();
-        }
-        explotionSfx.Play();
-        Debug.Log("boom");
-        boomParticles.Play(true);
-        magicParticles.Stop(true);
+            
+            colliderProjectile.isTrigger = true;
+            explotionSfx.Play();
+            //Debug.Log("boom");
+            boomParticles.Play(true);
+            magicParticles.Stop(true);
             //StartCoroutine(DestroyParticle());
         }
     }

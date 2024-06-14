@@ -47,7 +47,6 @@ public class CharacterMovement : MonoBehaviour
 
     bool isHuman;
     bool isCrounch;
-    bool isDead;
 
     public Projectile projectileScript;
     [SerializeField]
@@ -88,7 +87,6 @@ public class CharacterMovement : MonoBehaviour
         cooldown = 0f;
         curve = projectileScript.curve;
         curveStartPosition = curve.transform.position;
-        isDead = false;
         Time.timeScale = 1f;
     }
 

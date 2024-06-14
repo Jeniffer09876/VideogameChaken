@@ -45,10 +45,8 @@ public class ZombieWalk : MonoBehaviour
             if (_ZombieAttack.isAttacking == false)
             {
                 
-                
                     transform.Translate(Vector3.forward * Time.deltaTime * speed);
                     _animator.SetBool("isWalk", true);
-
                 
             }
 
@@ -62,12 +60,21 @@ public class ZombieWalk : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Magic")
+        {
+            ZombieTakeDamage();
+        }
+    }
+
     public void ZombieTakeDamage()
     {
         if (!isDead)
         {
             hitDamaged++;
-            if (hitDamaged >= 2)
+                print("zombie " + hitDamaged);
+            if (hitDamaged >= 3)
             {
                 isDead = true;
                 ZombieDead();
