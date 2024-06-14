@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class TeleportScene : MonoBehaviour
 {
-
+    public bool tp;
     [SerializeField]
     private CharacterMovement characterMovement;
     private AudioSource winSfx;
     public ParticleSystem particleTeleport;
+
+    public Timer canvas;
     // Start is called before the first frame update
     void Start()
     {
         characterMovement = FindObjectOfType<CharacterMovement>();
+        canvas = FindObjectOfType<Timer>();
         winSfx = GetComponent<AudioSource>();
     }
 
@@ -22,7 +25,15 @@ public class TeleportScene : MonoBehaviour
         characterMovement.animator.SetTrigger("TakeHealth");
         particleTeleport.Play();
         winSfx.Play();
-        StartCoroutine(WaitForTeleport());
+
+        if (tp)
+        {
+            StartCoroutine(WaitForTeleport());
+        }
+        else
+        {
+            canvas.winGame();
+        }
     }
 
     IEnumerator WaitForTeleport()

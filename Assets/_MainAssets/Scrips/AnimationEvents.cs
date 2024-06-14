@@ -39,7 +39,7 @@ public class AnimationEvents : MonoBehaviour
         */
         if (count == 10)
         {
-            canvas.winGame();
+            canvas.GoPortal();
         }
     }
     public void PickItem()
@@ -52,6 +52,7 @@ public class AnimationEvents : MonoBehaviour
             count++;
             counter.text = count.ToString();
             pick.goodToadArea = false;
+            print(count);
         }
     }
 

@@ -73,8 +73,8 @@ public class ZombieWalk : MonoBehaviour
         if (!isDead)
         {
             hitDamaged++;
-                print("zombie " + hitDamaged);
-            if (hitDamaged >= 3)
+                //wdprint("zombie " + hitDamaged);
+            if (hitDamaged >= 2)
             {
                 isDead = true;
                 ZombieDead();

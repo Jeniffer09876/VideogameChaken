@@ -9,7 +9,7 @@ public class PortalEvents : MonoBehaviour
     [SerializeField]
     private ParticleSystem portal;
     [SerializeField]
-    private int numberOfCrystals;
+    public int numberOfCrystals;
     [SerializeField]
     private AnimationEvents animEvents;
     [SerializeField]

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class Timer : MonoBehaviour
 {
+    public bool winScene;
     private CharacterMovement cm;
     public Image win;
     public Image lose;
@@ -38,7 +41,11 @@ public class Timer : MonoBehaviour
 
     public void winGame()
     {
-        //win.enabled = true;
+        if (winScene)
+        {
+            win.enabled = true;
+            StartCoroutine(Nextgame());
+        }
     }
 
     public void loseGame()
@@ -57,5 +64,11 @@ public class Timer : MonoBehaviour
     public void GoPortal()
     {
         instruccionText.text = "Ve la Piedra sagrada Cerca a la Maloka";
+    }
+    
+    IEnumerator Nextgame()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("login");
     }
 }
